@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Kalp Krizi Riski Tahmini</title>
+    <style>
+        .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px;
+        }
+
+        div{
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        background-color: #eaeaea;
+        padding: 20px;
+        text-align: center;
+        }
+
+        input{
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        background-color: #eaeaea;
+        padding: 20px;
+        text-align: center;
+        }
+
+        h1 {
+        text-align: center;
+        margin-top: 0;
+        color: #333;
+        }
+
+        form label {
+        display: block;
+        margin-bottom: 5px;
+        color: #333;
+        font-weight: bold;
+        }
+
+        form select,
+        form input[type="number"],
+        form input[type="submit"] {
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        background-color: #f1f1f1;
+        color: #333;
+        font-size: 16px;
+        margin-bottom: 10px;
+        flex-basis: calc(33.33% - 10px);
+        box-sizing: border-box;
+        }
+
+        form input[type="submit"] {
+        background-color: #333;
+        color: #fff;
+        cursor: pointer;
+        }
+
+        form input[type="submit"]:hover {
+        background-color: #666;
+        }
+
+        h2{
+            color: green;
+        }
+	</style>
+</head>
+<body>
+    <h1>Kalp Krizi Riski Tahmini</h1>
+    <form action="{{url_for('predict')}}" method="POST">
+    <div class="container">
+
+        <div>
+            <label>Yaş:</label>
+            <input type="number" name="age" required id="age"><br><br>
+        </div>
+
+
+        <div>
+            <label>Cinsiyet:</label>
+            <select name="sex" required id="gender">
+                <option value="1">Erkek</option>
+                <option value="0">Kadın</option>
+            </select><br><br>
+        </div>
+
+        <div>
+            <label>Göğüste Sıkışma:</label>
+            <select name="exang" required >
+                <option value="0">Yok</option>
+                <option value="1">Var</option>
+            </select><br><br>
+        </div>
+
+        <div>
+            <label>Açık Büyük Damar Sayısı:</label>
+            <select name="ca" required>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select><br><br>
+        </div>
+
+        <div>
+            <label>Göğüs Ağrısı:</label>
+            <select name="cp" required>
+                <option value="1">Tip 1 - Tırmalama Ağrısı</option>
+                <option value="2">Tip 2 - Basınçlı Ağrı</option>
+                <option value="3">Tip 3 - Sıkıştırıcı Ağrı</option>
+                <option value="4">Tip 4 - Hafif Ağrı</option>
+            </select><br><br>
+        </div>
+
+        <div>
+            <label>Dinlenme Durumu Kan Basıncı</label>
+            <input type="number" name="trestbps" required><br><br>
+
+        </div>
+
+        <div>
+            <label>Kolesterol:</label>
+            <input type="number" name="chol" required><br><br>
+        </div>
+
+        <div>
+            <label>Açlık Durumu Kan Şekeri:</label>
+            <select name="fbs" required>
+                <option value="0">Normal</option>
+                <option value="1">Yüksek</option>
+            </select><br><br>
+        </div>
+
+        <div>
+            <label>EKG Sonuçları:</label>
+            <select name="rest_ecg" required>
+                <option value="0">Normal</option>
+                <option value="1">ST-T dalga bozukluğu</option>
+                <option value="2">Ventriküler hipertrofi gösterme</option>
+            </select><br><br>
+        </div>
+
+        <div>  
+            <label>Maksimum kalp atış hızı:</label>
+            <input type="number" name="thalach" required><br><br>
+        </div>
+        
+        <div>
+            <input type="submit" value="Tahmin Et">
+        </div>
+        
+        <div>
+            <h2>{{label}}</h2>
+        </div>
+    </div>
+
+</form>
+</body>
+</html>
